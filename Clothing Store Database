@@ -1,0 +1,33 @@
+--Create a Clothing Store Database
+
+CREATE TABLE Clothing_Store (id INTEGER PRIMARY KEY, article_of_clothing TEXT, number_in_stock INTEGER, number_sold INTEGER, price INTEGER, number_of_sizes INTEGER); 
+INSERT INTO Clothing_Store VALUES
+(1, "Shirts", 50, 24, 15, 7),
+(2, "Pants", 30, 10, 20, 10),
+(3, "Tennis Shoes", 75, 50, 25, 12),
+(4, "Jackets", 20, 5, 45, 4),
+(5, "Socks", 45, 12, 8, 3),
+(6, "Scarves", 10, 2, 10, 1),
+(7, "Tank Tops", 75, 40, 12, 10),
+(8, "Dresses", 63, 28, 25, 10),
+(9, "Heels", 18, 12, 20, 5),
+(10, "House Shoes", 3, 40, 15, 7),
+(11, "Skirts", 14, 15, 18, 4),
+(12, "Bracelets", 20, 13, 8, 1),
+(13, "Earrings", 40, 28, 15, 1),
+(14, "Ties", 20, 30, 10, 1),
+(15, "Bras", 50, 100, 35, 14),
+(16, "Rings", 5, 32, 12, 12);
+
+--Display Clothing Store Database ordered by Price
+
+SELECT*FROM Clothing_Store ORDER BY price;
+
+
+--Display the top 5 highest sold items in Clothing Store Database 
+
+SELECT article_of_clothing, number_sold, price FROM Clothing_Store ORDER BY number_sold desc LIMIT 5;
+
+--Display total number of items currently in stock
+SELECT SUM(number_in_stock) FROM Clothing_Store;
+
