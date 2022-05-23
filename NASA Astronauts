@@ -1,0 +1,46 @@
+- Show the smallest number of Space Flights taken of the astronauts in the data set
+SELECT MIN(Space_Flights) FROM astronauts;
+
+
+- Average number of space walks taken of all the astronauts in the data set rounded to nearest whole number
+SELECT ROUND(AVG(Space_Walks)) 
+FROM astronauts;
+
+
+- Shows the name and total nubmer of flights taken of the astronaut with the most number of space walks in the data set
+SELECT Name, Space_Walks, Space_Flights, MAX(Space_Walks_hr)
+FROM astronauts;
+
+
+- Shows all astronauts who took flight after the year 2000, ordered by ascending date
+SELECT * 
+FROM astronauts 
+WHERE Year >2000 
+ORDER BY Year asc; 
+
+
+-Shows the total number of walks taken in the years where there were more than 6 walks taken in that year
+SELECT Year, SUM(Space_Walks) 
+As total_walks 
+FROM astronauts 
+Group By Year 
+HAVING total_walks >6;
+
+
+- Shows the number of astronauts in each level of risk for muscle degeneration based on each astronauts number of flight hours 
+SELECT COUNT(*), 
+CASE
+WHEN Space_Flight_Hr >= 10000 THEN "High Risk"
+WHEN Space_Flight_HR >= 5000 THEN "Average Risk"
+WHEN Space_Flight_Hr >= 1000 THEN "Low Risk"
+ELSE "No Risk" 
+END AS "Risk_for_Muscle_Degeneration"
+FROM astronauts
+GROUP BY Risk_for_Muscle_Degeneration;
+
+
+- Shows the names of the astronauts who too more than 4 space flight but only took 2 or fewer space walks
+SELECT Name, Space_Flights, Space_Walks 
+FROM astronauts
+WHERE Space_Flights >4 
+AND Space_Walks <=2; 
