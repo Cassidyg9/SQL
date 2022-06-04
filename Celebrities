@@ -1,0 +1,69 @@
+/* Create table about the people and what they do */
+
+/*- Gwen Stefanie
+- Post Malone
+- Beyonce
+- Brittany Spears
+- Nick Jonas
+- Jason Derulo
+- The Weeknd
+- Rihanna
+- Jennifer Lopez
+- Justin Timberlake
+- Blake Shelton
+- Jay-Z
+- Priyanka Chopra
+- Jessica Biel
+*/
+
+CREATE TABLE celebrities (id INTEGER PRIMARY KEY, name TEXT, age INTEGER, partner_id INTEGER); 
+
+INSERT INTO celebrities VALUES 
+(1, "Gwen Stefanie", 52, 11), 
+(2, "Post Malone", 26, NULL), 
+(3, "Beyonce", 40, 12), 
+(4, "Brittany Spears", 40, NULL), 
+(5, "Nick Jonas", 29, 13), 
+(6, "Jason Derulo", 32, NULL), 
+(7, "The Weeknd", 32, NULL), 
+(8, "Rihanna", 34, NULL), 
+(9, "Jennifer Lopez", 52, NULL),
+(10, "Justin Timberlake", 41, 14),
+(11, "Blake Shelton", 45, 1),
+(12, "Jay-Z", 52, 3),
+(13, "Priyanka Chopra", 39, 4),
+(14, "Jessica Biel", 40, 10); 
+
+CREATE TABLE songs (c_id INTEGER PRIMARY KEY, song_name TEXT, song_rank INTEGER, chart_year integer); 
+
+INSERT INTO songs VALUES 
+(1, "Hollaback Girl", 1, 2008),
+(2, "Congratulations", 8, 2017), 
+(3, "Partition", 23, 2014),
+(4, "Piece of Me", 18, 2007), 
+(5, "Jealous", 7, 2014),
+(6, "Wiggle", 5, 2014),
+(7, "Blinding Lights", 1, 2020), 
+(8, "SOS", 1, 2006),
+(9, "Jenny from the Block", NULL, NULL),
+(10, "Rock your Body", 5,2002);
+
+-Join the two tables together showing all columns in each table
+SELECT * 
+FROM celebrities
+LEFT OUTER JOIN songs
+ON celebrities.id=songs.c_id;
+
+
+- Join the two lists to show the celebrities song and the peak ranking of that song in order of song rank
+SELECT celebrities.name, songs.song_name, songs.song_rank
+FROM songs
+LEFT OUTER JOIN celebrities
+ON celebrities.id=songs.c_id
+ORDER BY song_rank ASC;
+
+- List the celebrities beside their celebrity partner on the list
+SELECT celebrities.name, partner.name
+FROM celebrities
+JOIN celebrities partner
+ON celebrities.id= partner.partner_id; 
