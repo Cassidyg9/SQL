@@ -1,0 +1,31 @@
+I was given a table of data of countries and asked to show which countries were the biggest.
+I was told countries are considered big if it has an area of at least 3,000,000 or it has a population of at least 25,000,000
+This was the SQL I wrote to generate this answer
+
+- SELECT name, population, area
+  FROM world
+  WHERE area > 3000000 OR population >=25000000
+
+I was given a table of data regarding products and whether or not they were low fat and recyclable
+I was asked to show the products that were both low fat and recyclable 
+This was the SQL I wrote to genertae this answer
+
+- SELECT product_id
+  FROM Products
+  WHERE low_fats = 'Y' AND recyclable = 'Y'
+
+I was given a table of data of Custommers and who refered them and asked to show all of the customer who where not refered by the referee with an id of 2
+This was the SQL I wrote to generate this answer
+
+- SELECT name
+  FROM Customer
+  WHERE referee_id <> '2' OR referee_id IS null
+
+
+I was given two tables, one of customers and one of customer orders. I was asked to show the customer who never order anything.
+This was the SQL I wrote to generate this answer
+- SELECT Customers.name as Customers
+  FROM Customers
+  LEFT JOIN Orders
+  ON Customers.id=Orders.customerId
+  WHERE customerId IS NULL
